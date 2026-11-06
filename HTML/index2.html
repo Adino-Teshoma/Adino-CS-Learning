@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   
+    <title>My Personal Website</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+
+<body>
+
+<header>
+    <h2 class="logo">My Website</h2>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <a href="#feedback">Feedback</a>
+    </nav>
+    <div class="profile">
+    <img src="For Gitup.png" alt="Adino Teshoma" width="80" height="60">
+    <h2>Adino Teshoma</h2>
+    <p>Future Professional Programmer</p>
+</div>
+</header>
+
+<main>
+
+    <section id="home" class="hero">
+        <h1>Welcome to My Personal Website</h1>
+        <p>Welcome! Thank you for visiting my website.</p>
+    </section>
+
+    <section id="about" class="card">
+        <h2>About Me</h2>
+
+        <p>My name is Adino Teshoma.</p>
+        <p>I am learning HTML, CSS, JavaScript and Computer Science.</p>
+        <p>My goal is to become a professional programmer.</p>
+    </section>
+
+    <section class="card">
+        <h2>Connect With Me</h2>
+
+        <p>Follow me on social media:</p>
+
+        <a href="https://youtube.com/@YourChannel"
+           target="_blank" rel="noopener noreferrer">
+            YouTube
+        </a>
+
+        |
+
+        <a href="https://t.me/YourUsername"
+           target="_blank" rel="noopener noreferrer">
+            Telegram
+        </a>
+
+        |
+
+        <a href="https://wa.me/YourNumber"
+           target="_blank" rel="noopener noreferrer">
+            WhatsApp
+        </a>
+    </section>
+
+    <section id="contact" class="card">
+
+        <h2>Contact Me</h2>
+
+        <p>Send me a message below.</p>
+
+        <form id="contactForm">
+
+            <label for="visitorName">Your Name</label>
+            <input type="text" id="visitorName"
+                   placeholder="Enter your name" required>
+
+            <label for="visitorEmail">Your Email</label>
+            <input type="email" id="visitorEmail"
+                   placeholder="Enter your email" required>
+
+            <label for="message">Your Message</label>
+            <textarea id="message"
+                      placeholder="Write your message..."
+                      required></textarea>
+
+            <label for="attachment">Attach a File (Optional)</label>
+            <input type="file" id="attachment"
+                   accept=".pdf,.jpg,.jpeg,.png">
+
+            <button type="submit">Send Message</button>
+            <button type="reset" class="clear-button">Clear</button>
+
+        </form>
+
+        <p id="contactStatus"></p>
+
+    </section>
+
+    <section id="feedback" class="card">
+
+        <h2>Give Your Feedback</h2>
+
+        <form id="feedbackForm">
+
+            <label for="feedbackName">Your Name</label>
+            <input type="text" id="feedbackName"
+                   placeholder="Enter your name" required>
+
+            <label for="feedbackText">Your Feedback</label>
+            <textarea id="feedbackText"
+                      placeholder="Write your feedback..."
+                      required></textarea>
+
+            <button type="submit">Submit Feedback</button>
+
+        </form>
+
+        <p id="feedbackStatus"></p>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 My Personal Website</p>
+    <p>Created by Adino Teshoma</p>
+</footer>
+
+<script>
+
+const contactForm = document.getElementById("contactForm");
+
+contactForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("visitorName").value.trim();
+    const email = document.getElementById("visitorEmail").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const file = document.getElementById("attachment").files[0];
+
+    if (file && file.size > 5 * 1024 * 1024) {
+        alert("File must be smaller than 5 MB.");
+        return;
+    }
+
+    document.getElementById("contactStatus").textContent =
+        "Thank you " + name +
+        "! Your form is ready. A backend is needed to deliver it.";
+
+    console.log({
+        name: name,
+        email: email,
+        message: message,
+        file: file ? file.name : "No file"
+    });
+
+    contactForm.reset();
+
+});
+
+
+const feedbackForm = document.getElementById("feedbackForm");
+
+feedbackForm.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const name = document.getElementById("feedbackName").value.trim();
+    const feedback = document.getElementById("feedbackText").value.trim();
+
+    console.log({
+        name: name,
+        feedback: feedback
+    });
+
+    document.getElementById("feedbackStatus").textContent =
+        "Thank you " + name + " for your feedback!";
+
+    feedbackForm.reset();
+
+});
+
+</script>
+
+</body>
+</html>
