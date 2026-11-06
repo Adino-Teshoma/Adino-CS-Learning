@@ -1,0 +1,280 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0b1120;
+    color: #f1f5f9;
+    line-height: 1.6;
+}
+
+/* HEADER */
+
+header {
+    background-color: #111c35;
+    padding: 20px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    border-bottom: 1px solid #263653;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: #60a5fa;
+    font-size: 25px;
+}
+
+/* NAVIGATION */
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #60a5fa;
+}
+
+/* PROFILE PHOTO */
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #60a5fa;
+}
+
+.profile h2 {
+    color: white;
+    font-size: 16px;
+}
+
+.profile p {
+    color: #60a5fa;
+    font-size: 12px;
+}
+
+/* HOME SECTION */
+
+.hero {
+    text-align: center;
+    padding: 85px 20px;
+    background: linear-gradient(
+        135deg,
+        #111c35,
+        #0b1120
+    );
+}
+
+.hero h1 {
+    color: #60a5fa;
+    font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.hero p {
+    color: #cbd5e1;
+    font-size: 17px;
+}
+
+/* CARD DESIGN */
+
+.card {
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #111c35;
+    border: 1px solid #263653;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: #60a5fa;
+    transform: translateY(-3px);
+}
+
+.card h2 {
+    color: #60a5fa;
+    margin-bottom: 20px;
+}
+
+/* FORM LABELS */
+
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: #cbd5e1;
+}
+
+/* INPUT FIELDS */
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    background-color: #0b1120;
+    color: white;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #60a5fa;
+    border-color: #60a5fa;
+}
+
+input[type="file"] {
+    padding: 10px;
+}
+
+/* BUTTONS */
+
+button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+    transform: scale(1.03);
+}
+
+.clear-button {
+    background-color: #475569;
+    margin-left: 8px;
+}
+
+.clear-button:hover {
+    background-color: #334155;
+}
+
+/* SOCIAL LINKS */
+
+.card a {
+    display: inline-block;
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.card a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+/* FORM STATUS */
+
+#contactStatus,
+#feedbackStatus {
+    margin-top: 15px;
+    color: #60a5fa;
+    overflow-wrap: anywhere;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+    background-color: #111c35;
+    color: #94a3b8;
+}
+
+/* HIDDEN ELEMENTS */
+
+[hidden] {
+    display: none !important;
+}
+
+/* MOBILE RESPONSIVE DESIGN */
+
+@media (max-width: 650px) {
+
+    header {
+        flex-direction: column;
+        text-align: center;
+        padding: 18px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    nav a {
+        margin: 0;
+    }
+
+    .profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .hero {
+        padding: 55px 15px;
+    }
+
+    .hero h1 {
+        font-size: 25px;
+    }
+
+    .card {
+        margin: 20px 12px;
+        padding: 20px;
+    }
+
+    button {
+        max-width: 100%;
+    }
+}
