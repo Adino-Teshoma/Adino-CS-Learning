@@ -1,0 +1,136 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Room {
+public:
+    int roomNumber;
+    string roomType;
+    float price;
+    bool isBooked;
+    string guestName;
+
+    Room(int r, string t, float p) {
+        roomNumber = r;
+        roomType = t;
+        price = p;
+        isBooked = false;
+        guestName = "";
+    }
+
+    void bookRoom(string name) {
+        if (!isBooked) {
+            isBooked = true;
+            guestName = name;
+            cout << "Room " << roomNumber << " booked successfully.\n";
+        } else {
+            cout << "Room already booked.\n";
+        }
+    }
+
+    void checkoutRoom() {
+        if (isBooked) {
+            isBooked = false;
+            guestName = "";
+            cout << "Checkout successful.\n";
+        } else {
+            cout << "Room is not booked.\n";
+        }
+    }
+
+    void display() {
+        cout << "Room " << roomNumber
+             << " | " << roomType
+             << " | $" << price
+             << " | " << (isBooked ? "Booked" : "Available") << endl;
+    }
+};
+
+class Hotel {
+private:
+    Room* rooms[10];
+    int roomCount;
+
+public:
+    Hotel() {
+        roomCount = 0;
+    }
+
+    void addRoom(int number, string type, float price) {
+        rooms[roomCount++] = new Room(number, type, price);
+    }
+
+    void showRooms() {
+        cout << "\n--- Room Status ---\n";
+        for (int i = 0; i < roomCount; i++) {
+            rooms[i]->display();
+        }
+    }
+
+    void bookRoom(int number, string guest) {
+        for (int i = 0; i < roomCount; i++) {
+            if (rooms[i]->roomNumber == number) {
+                rooms[i]->bookRoom(guest);
+                return;
+            }
+        }
+        cout << "Room not found.\n";
+    }
+
+    void checkoutRoom(int number) {
+        for (int i = 0; i < roomCount; i++) {
+            if (rooms[i]->roomNumber == number) {
+                rooms[i]->checkoutRoom();
+                return;
+            }
+        }
+        cout << "Room not found.\n";
+    }
+};
+
+int main() {
+    Hotel hotel;
+
+    hotel.addRoom(101, "Single", 100);
+    hotel.addRoom(102, "Double", 150);
+    hotel.addRoom(103, "Suite", 300);
+
+    int choice, roomNumber;
+    string guestName;
+
+    do {
+        cout << "\n--- Hotel Management System ---\n";
+        cout << "1. View Rooms\n";
+        cout << "2. Book Room\n";
+        cout << "3. Checkout Room\n";
+        cout << "4. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+        case 1:
+            hotel.showRooms();
+            break;
+        case 2:
+            cout << "Enter room number: ";
+            cin >> roomNumber;
+            cout << "Enter guest name: ";
+            cin.ignore();
+            getline(cin, guestName);
+            hotel.bookRoom(roomNumber, guestName);
+            break;
+        case 3:
+            cout << "Enter room number: ";
+            cin >> roomNumber;
+            hotel.checkoutRoom(roomNumber);
+            break;
+        case 4:
+            cout << "Exiting system...\n";
+            break;
+        default:
+            cout << "Invalid choice.\n";
+        }
+    } while (choice != 4);
+
+    return 0;
+}
