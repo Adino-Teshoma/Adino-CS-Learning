@@ -1,0 +1,62 @@
+create database banking;
+ use banking;
+ CREATE TABLE Customer (
+    CustomerID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Gender CHAR(1),
+    DateOfBirth DATE,
+    Phone VARCHAR(15),
+    Email VARCHAR(100),
+    Address VARCHAR(200)
+);
+CREATE TABLE Account (
+    AccountNumber INT PRIMARY KEY,
+    AccountType VARCHAR(20),
+    Balance DECIMAL(12,2),
+    OpenDate DATE,
+    CustomerID INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+);
+CREATE TABLE Transaction (
+    TransactionID INT PRIMARY KEY,
+    TransactionType VARCHAR(20),
+    Amount DECIMAL(12,2),
+    TransactionDate DATETIME,
+    AccountNumber INT,
+    FOREIGN KEY (AccountNumber) REFERENCES Account(AccountNumber)
+);
+CREATE TABLE Transfer (
+    TransferID INT PRIMARY KEY,
+    FromAccount INT,
+    ToAccount INT,
+    Amount DECIMAL(12,2),
+    TransferDate DATETIME,
+    FOREIGN KEY (FromAccount) REFERENCES Account(AccountNumber),
+    FOREIGN KEY (ToAccount) REFERENCES Account(AccountNumber)
+);
+CREATE TABLE Loan (
+    LoanID INT PRIMARY KEY,
+    LoanType VARCHAR(50),
+    LoanAmount DECIMAL(12,2),
+    InterestRate DECIMAL(5,2),
+    StartDate DATE,
+    EndDate DATE,
+    CustomerID INT,
+    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
+);
+CREATE TABLE Payment (
+    PaymentID INT PRIMARY KEY,
+    PaymentDate DATE,
+    AmountPaid DECIMAL(12,2),
+    LoanID INT,
+    FOREIGN KEY (LoanID) REFERENCES Loan(LoanID)
+);
+INSERT INTO Customer VALUES
+(1, 'Alemu', 'Bekele', 'M', '1998-04-12', '0911223344', 'alemu@gmail.com', 'Jinka');
+UPDATE Account
+SET Balance = Balance + 1000
+WHERE AccountNumber = 101;
+UPDATE Account
+SET Balance = Balance - 500
+WHERE AccountNumber = 101 AND Balance >= 500;
