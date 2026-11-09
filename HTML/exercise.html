@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration Form</title>
+</head>
+
+<body>
+
+    <h2>Student Registration Form</h2>
+
+    <form action="register.php" method="post">
+
+        <!-- 1. Student Name -->
+        <label>Student Name:</label>
+        <input type="text" name="student_name">
+        <br><br>
+
+        <!-- 2. Student ID -->
+        <label>Student ID:</label>
+        <input type="text" name="student_id">
+        <br><br>
+
+        <!-- 3. Department -->
+        <label>Department:</label>
+        <select name="department">
+            <option value="Computer Science">Computer Science</option>
+            <option value="Information Technology">Information Technology</option>
+        </select>
+        <br><br>
+
+        <!-- 4. Semester -->
+        <label>Semester:</label>
+        <select name="semester">
+            <option value="I">I</option>
+            <option value="II">II</option>
+        </select>
+        <br><br>
+
+        <!-- 5. Academic Year -->
+        <label>Academic Year:</label>
+        <select name="academic_year">
+            <option value="1998-2000">1998-2000</option>
+            <option value="2000" selected>2000</option>
+        </select>
+        <br><br>
+
+        <!-- 6. Submit and Reset Buttons -->
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+
+    </form>
+
+</body>
+</html>
